@@ -15,6 +15,8 @@
             background-color: #FFF8E7;
             /* Cream background */
             overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
         .container {
@@ -25,24 +27,19 @@
 
         .section {
             padding: 60px 0;
-            opacity: 0;
-            animation: fadeInSection 1s ease-out forwards;
         }
 
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.4s; }
-        .section:nth-child(4) { animation-delay: 0.6s; }
-        .section:nth-child(5) { animation-delay: 0.8s; }
+        /* Scroll Animation Base */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, opacity;
+        }
 
-        @keyframes fadeInSection {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .btn {
@@ -56,12 +53,13 @@
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .btn:hover {
             background-color: #E55A2B;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .dark-bg {
@@ -79,7 +77,7 @@
         h2,
         h3 {
             font-weight: bold;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
@@ -88,7 +86,8 @@
             /* Placeholder for mountain image */
             background-size: cover;
             background-position: center;
-            height: 600px;
+            height: 100vh;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,6 +103,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            background: rgba(0, 0, 0, 0.4);
             /* Overlay for readability */
             transition: opacity 0.5s ease;
         }
@@ -111,30 +111,18 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            animation: fadeInUp 1.2s ease-out 0.5s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            max-width: 800px;
+            padding: 0 20px;
         }
 
         .hero h1 {
             font-size: 3.5em;
             margin-bottom: 10px;
-            animation: fadeInUp 1s ease-out 0.8s both;
         }
 
         .hero p {
             font-size: 1.5em;
             margin-bottom: 30px;
-            animation: fadeInUp 1s ease-out 1s both;
         }
 
         /* Travel Made Easy Section */
@@ -142,24 +130,10 @@
             display: flex;
             align-items: center;
             gap: 40px;
-            opacity: 0;
-            animation: fadeInSection 0.8s ease-out forwards;
         }
 
         .travel-easy-text {
             flex: 1;
-            animation: fadeInLeft 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .travel-easy-text h2 {
@@ -173,25 +147,13 @@
 
         .travel-easy-img {
             flex: 1;
-            animation: fadeInRight 0.8s ease-out 0.4s both;
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .travel-easy-img img {
             width: 100%;
             height: auto;
             border-radius: 10px;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .travel-easy-img img:hover {
@@ -202,20 +164,18 @@
             display: flex;
             gap: 20px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         /* Summer Deals Section */
         .deals {
             text-align: center;
-            opacity: 0;
-            animation: fadeInSection 0.8s ease-out forwards;
         }
 
         .deals h2 {
             font-size: 2.5em;
             margin-bottom: 50px;
             color: #333;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
         .deals-grid {
@@ -231,19 +191,7 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease-out forwards;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .deals-grid .deal-card:nth-child(1) { animation-delay: 0.2s; }
-        .deals-grid .deal-card:nth-child(2) { animation-delay: 0.4s; }
-        .deals-grid .deal-card:nth-child(3) { animation-delay: 0.6s; }
-
-        .deal-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .deal-card img {
@@ -251,10 +199,10 @@
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .deal-card img:hover {
+        .deal-card:hover img {
             transform: scale(1.05);
         }
 
@@ -266,27 +214,37 @@
         .deal-card ul {
             position: relative;
             right: -20px;
-            /* list-style: none; */
             padding: 0;
             color: black;
+            list-style: none;
         }
 
         .deal-card li {
             margin: 5px 0;
-            transition: color 0.3s ease;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .deal-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FF6B35;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         /* Services Section */
         .services {
             text-align: center;
-            opacity: 0;
-            animation: fadeInSection 0.8s ease-out forwards;
         }
 
         .services h2 {
             font-size: 2.5em;
             margin-bottom: 50px;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
         .services-grid {
@@ -300,19 +258,7 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease-out forwards;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .services-grid .service-card:nth-child(1) { animation-delay: 0.2s; }
-        .services-grid .service-card:nth-child(2) { animation-delay: 0.4s; }
-        .services-grid .service-card:nth-child(3) { animation-delay: 0.6s; }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .service-card img {
@@ -320,29 +266,47 @@
             height: 150px;
             object-fit: cover;
             border-radius: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .service-card img:hover {
+        .service-card:hover img {
             transform: scale(1.05);
         }
 
         .service-card p {
             margin: 15px 0;
-            transition: color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         /* Testimonials Section */
         .testimonials {
             text-align: center;
-            opacity: 0;
-            animation: fadeInSection 0.8s ease-out forwards;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .testimonials > * {
+            position: relative;
+            z-index: 1;
         }
 
         .testimonials h2 {
             font-size: 2.5em;
             margin-bottom: 50px;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
         .testimonials-grid {
@@ -357,19 +321,7 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease-out forwards;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .testimonials-grid .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
-        .testimonials-grid .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
-        .testimonials-grid .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .testimonial-card img {
@@ -377,7 +329,7 @@
             height: 80px;
             border-radius: 50%;
             margin-bottom: 15px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .testimonial-card img:hover {
@@ -388,60 +340,85 @@
             color: #FF6B35;
             font-size: 1.2em;
             margin-bottom: 10px;
-            transition: color 0.3s ease;
         }
 
         .testimonial-card p {
             font-style: italic;
             margin-bottom: 10px;
-            transition: color 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         /* Footer */
         .footer {
             text-align: left;
             padding: 40px 0;
-            opacity: 0;
-            animation: fadeInSection 0.8s ease-out 1s forwards;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            transition: all 0.3s ease;
         }
 
         .footer-left {
             display: flex;
-            background: url(static/images/f2.png);
+            background: url(static/images/f2.png) center/cover;
             flex-direction: column;
             width: 100%;
-            animation: fadeInLeft 0.8s ease-out both;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
         }
 
         .footer h3 {
             color: white;
             margin-bottom: 20px;
-            transition: color 0.3s ease;
         }
 
         .footer p {
             margin: 5px 0;
-            transition: color 0.3s ease;
         }
 
         .logo {
             color: #FF6B35;
             font-size: 1.5em;
             font-weight: bold;
-            transition: color 0.3s ease;
         }
 
-        /* Responsive */
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3em;
+            }
+
+            .hero p {
+                font-size: 1.3em;
+            }
+
+            .deals-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .travel-easy {
-                flex-direction: column;
+            .container {
+                padding: 0 15px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .hero {
+                height: 80vh;
+                min-height: 400px;
             }
 
             .hero h1 {
@@ -452,16 +429,97 @@
                 font-size: 1.2em;
             }
 
+            .travel-easy {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .travel-easy-text h2 {
+                font-size: 2em;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .deals h2,
+            .services h2,
+            .testimonials h2 {
+                font-size: 2em;
+            }
+
+            .deals-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .deal-card img {
+                height: 150px;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
-            .section {
-                animation: none;
+            .footer-left {
+                text-align: center;
             }
 
-            .travel-easy, .deals, .services, .testimonials, .footer {
-                animation: fadeInSection 0.8s ease-out forwards;
+            /* Reduce animation duration on mobile for smoothness */
+            .scroll-animate {
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .travel-easy-text h2,
+            .deals h2,
+            .services h2,
+            .testimonials h2 {
+                font-size: 1.8em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .deal-card,
+            .service-card,
+            .testimonial-card {
+                padding: 15px;
+            }
+
+            .footer {
+                padding: 20px 0;
+            }
+
+            .footer-content {
+                gap: 15px;
+            }
+
+            /* Even shorter on small screens */
+            .scroll-animate {
+                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             }
         }
     </style>
@@ -469,7 +527,7 @@
 
 <body>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero scroll-animate">
         <div class="hero-content">
             <h1>Time for your<br>next adventure</h1>
             <p>Let us plan it for you</p>
@@ -481,7 +539,7 @@
     <section class="section light-bg">
         <div class="container">
             <div class="travel-easy">
-                <div class="travel-easy-text">
+                <div class="travel-easy-text scroll-animate">
                     <h2>🧭 Travel made easy</h2>
                     <p>Talk that talks about your company, introduce your vision, personality. Any bullet that helps
                         build a working relationship with your clients.</p>
@@ -490,7 +548,7 @@
                         <a href="#" class="btn">Our Offerings</a>
                     </div>
                 </div>
-                <div class="travel-easy-img">
+                <div class="travel-easy-img scroll-animate">
                     <img src="static/images/2.png" alt="Person on cliff with red car">
                 </div>
             </div>
@@ -500,10 +558,10 @@
     <!-- Summer Deals Section -->
     <section class="section dark-bg">
         <div class="container">
-            <div class="deals">
+            <div class="deals scroll-animate">
                 <h2 style="color: white;">Summer Deals Promo</h2>
                 <div class="deals-grid">
-                    <div class="deal-card">
+                    <div class="deal-card scroll-animate">
                         <img src="static/images/3.png" alt="Nature Escape">
                         <h3>Nature Escape</h3>
                         <ul>
@@ -514,7 +572,7 @@
                         </ul>
                         <a href="#" class="btn">Book Now</a>
                     </div>
-                    <div class="deal-card">
+                    <div class="deal-card scroll-animate">
                         <img src="static/images/4.png" alt="Romantic Getaway">
                         <h3>Romantic Getaway</h3>
                         <ul>
@@ -524,7 +582,7 @@
                         </ul>
                         <a href="#" class="btn">Book Now</a>
                     </div>
-                    <div class="deal-card">
+                    <div class="deal-card scroll-animate">
                         <img src="static/images/5.png" alt="Family Vacation">
                         <h3>Family Vacation</h3>
                         <ul>
@@ -542,20 +600,20 @@
     <!-- Services Section -->
     <section class="section light-bg">
         <div class="container">
-            <div class="services">
+            <div class="services scroll-animate">
                 <h2>We'll handle your trip for you</h2>
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card scroll-animate">
                         <img src="static/images/s4.png" alt="Airport Transfers">
                         <h3>Airport Transfers</h3>
                         <p>Airport transfer services. Overview of why your clients should use it.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card scroll-animate">
                         <img src="static/images/fl.png" alt="Flight Bookings">
                         <h3>Flight Bookings</h3>
                         <p>Share your service offerings. Overview of why they should use it.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card scroll-animate">
                         <img src="static/images/s3.png"
                             alt="Tours & Activities">
                         <h3>Tours & Activities</h3>
@@ -567,26 +625,26 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section dark-bg">
-        <div class="container" style="background: url(static/images/f1.png); background-size:cover;">
-            <div class="testimonials">
+    <section class="section dark-bg" style="background: url(static/images/f1.png) center/cover;">
+        <div class="container">
+            <div class="testimonials scroll-animate">
                 <h2>Our favorite travelers</h2>
                 <div class="testimonials-grid">
-                    <div class="testimonial-card">
+                    <div class="testimonial-card scroll-animate">
                         <img src="https://via.placeholder.com/80x80?text=Noah" alt="Noah Schumer">
                         <div class="stars">★★★★★</div>
                         <p>"Boost your product and services credibility by adding testimonials from clients who tried it
                             invaluable."</p>
                         <h4>Noah Schumer</h4>
                     </div>
-                    <div class="testimonial-card">
+                    <div class="testimonial-card scroll-animate">
                         <img src="https://via.placeholder.com/80x80?text=Julia" alt="Julia Patel">
                         <div class="stars">★★★★★</div>
                         <p>"Boost your product and services credibility by adding testimonials from clients who tried it
                             invaluable."</p>
                         <h4>Julia Patel</h4>
                     </div>
-                    <div class="testimonial-card">
+                    <div class="testimonial-card scroll-animate">
                         <img src="https://via.placeholder.com/80x80?text=Natalia" alt="Natalia Lowe">
                         <div class="stars">★★★★★</div>
                         <p>"Boost your product and services credibility by adding testimonials from clients who tried it
@@ -602,12 +660,12 @@
     <footer class="footer dark-bg">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-left">
+                <div class="footer-left scroll-animate">
                     <div class="logo">
                         🧭 Hotston Tours & Travels</div>
                     <p>Let's plan your next trip</p>
                 </div>
-                <div>
+                <div class="scroll-animate">
                     <h3>Contact</h3>
                     <p><strong>Address</strong><br>1234 Travel St. Suite 2A</p>
                     <p><strong>Phone</strong><br>(555) 456-7890</p>
@@ -616,6 +674,62 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Smooth scroll animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'  // Trigger earlier for smoother entry
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);  // Unobserve after animation to improve performance
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-animate elements
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stagger animations for cards in grids with shorter delays
+        const grids = document.querySelectorAll('.deals-grid, .services-grid, .testimonials-grid');
+        grids.forEach(grid => {
+            const cards = grid.querySelectorAll('.scroll-animate');
+            cards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.05}s`;  // Shorter stagger for less perceived lag
+            });
+        });
+
+        // For travel-easy sub-elements with short delays
+        const travelEasyText = document.querySelector('.travel-easy-text');
+        const travelEasyImg = document.querySelector('.travel-easy-img');
+        if (travelEasyText) {
+            travelEasyText.style.transitionDelay = '0.1s';
+        }
+        if (travelEasyImg) {
+            travelEasyImg.style.transitionDelay = '0.2s';
+        }
+
+        // Hero animates immediately on load
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            setTimeout(() => {
+                hero.classList.add('animate');
+            }, 100);  // Small delay to allow load
+        }
+
+        // Reset will-change after animation to save resources
+        document.addEventListener('animationend', (e) => {
+            if (e.target.classList.contains('scroll-animate') && e.target.classList.contains('animate')) {
+                e.target.style.willChange = 'auto';
+            }
+        }, true);
+    </script>
 </body>
 
 </html>
