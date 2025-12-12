@@ -14,6 +14,7 @@
             color: #333;
             background-color: #FFF8E7;
             /* Cream background */
+            overflow-x: hidden;
         }
 
         .container {
@@ -24,6 +25,24 @@
 
         .section {
             padding: 60px 0;
+            opacity: 0;
+            animation: fadeInSection 1s ease-out forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .btn {
@@ -37,11 +56,12 @@
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .btn:hover {
             background-color: #E55A2B;
+            transform: translateY(-2px);
         }
 
         .dark-bg {
@@ -59,6 +79,7 @@
         h2,
         h3 {
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         /* Hero Section */
@@ -84,21 +105,36 @@
             width: 100%;
             height: 100%;
             /* Overlay for readability */
+            transition: opacity 0.5s ease;
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
+            animation: fadeInUp 1.2s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
             font-size: 3.5em;
             margin-bottom: 10px;
+            animation: fadeInUp 1s ease-out 0.8s both;
         }
 
         .hero p {
             font-size: 1.5em;
             margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 1s both;
         }
 
         /* Travel Made Easy Section */
@@ -106,10 +142,24 @@
             display: flex;
             align-items: center;
             gap: 40px;
+            opacity: 0;
+            animation: fadeInSection 0.8s ease-out forwards;
         }
 
         .travel-easy-text {
             flex: 1;
+            animation: fadeInLeft 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .travel-easy-text h2 {
@@ -123,12 +173,29 @@
 
         .travel-easy-img {
             flex: 1;
+            animation: fadeInRight 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .travel-easy-img img {
             width: 100%;
             height: auto;
             border-radius: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .travel-easy-img img:hover {
+            transform: scale(1.05);
         }
 
         .btn-group {
@@ -140,12 +207,15 @@
         /* Summer Deals Section */
         .deals {
             text-align: center;
+            opacity: 0;
+            animation: fadeInSection 0.8s ease-out forwards;
         }
 
         .deals h2 {
             font-size: 2.5em;
             margin-bottom: 50px;
             color: #333;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
         .deals-grid {
@@ -161,6 +231,19 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .deals-grid .deal-card:nth-child(1) { animation-delay: 0.2s; }
+        .deals-grid .deal-card:nth-child(2) { animation-delay: 0.4s; }
+        .deals-grid .deal-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .deal-card img {
@@ -168,6 +251,11 @@
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .deal-card img:hover {
+            transform: scale(1.05);
         }
 
         .deal-card h3 {
@@ -185,16 +273,20 @@
 
         .deal-card li {
             margin: 5px 0;
+            transition: color 0.3s ease;
         }
 
         /* Services Section */
         .services {
             text-align: center;
+            opacity: 0;
+            animation: fadeInSection 0.8s ease-out forwards;
         }
 
         .services h2 {
             font-size: 2.5em;
             margin-bottom: 50px;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
         .services-grid {
@@ -208,6 +300,19 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .services-grid .service-card:nth-child(1) { animation-delay: 0.2s; }
+        .services-grid .service-card:nth-child(2) { animation-delay: 0.4s; }
+        .services-grid .service-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .service-card img {
@@ -215,20 +320,29 @@
             height: 150px;
             object-fit: cover;
             border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card img:hover {
+            transform: scale(1.05);
         }
 
         .service-card p {
             margin: 15px 0;
+            transition: color 0.3s ease;
         }
 
         /* Testimonials Section */
         .testimonials {
             text-align: center;
+            opacity: 0;
+            animation: fadeInSection 0.8s ease-out forwards;
         }
 
         .testimonials h2 {
             font-size: 2.5em;
             margin-bottom: 50px;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
         .testimonials-grid {
@@ -243,6 +357,19 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonials-grid .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
+        .testimonials-grid .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
+        .testimonials-grid .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .testimonial-card img {
@@ -250,50 +377,65 @@
             height: 80px;
             border-radius: 50%;
             margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card img:hover {
+            transform: scale(1.1);
         }
 
         .stars {
             color: #FF6B35;
             font-size: 1.2em;
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
         .testimonial-card p {
             font-style: italic;
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
         /* Footer */
         .footer {
             text-align: left;
             padding: 40px 0;
+            opacity: 0;
+            animation: fadeInSection 0.8s ease-out 1s forwards;
         }
 
-     
         .footer-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
+            transition: all 0.3s ease;
         }
+
         .footer-left {
             display: flex;
             background: url(static/images/f2.png);
             flex-direction: column;
             width: 100%;
+            animation: fadeInLeft 0.8s ease-out both;
         }
+
         .footer h3 {
             color: white;
             margin-bottom: 20px;
+            transition: color 0.3s ease;
         }
 
         .footer p {
             margin: 5px 0;
+            transition: color 0.3s ease;
         }
 
         .logo {
             color: #FF6B35;
             font-size: 1.5em;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         /* Responsive */
@@ -312,6 +454,14 @@
 
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+
+            .section {
+                animation: none;
+            }
+
+            .travel-easy, .deals, .services, .testimonials, .footer {
+                animation: fadeInSection 0.8s ease-out forwards;
             }
         }
     </style>
